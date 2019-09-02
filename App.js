@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 //use state ALWAYS returns an array with Exactly TWO ELEMENTS
 import logo from './logo.svg';
 import './App.css';
-import Radium, { StyleRoot } from 'radium'
 import Person from './Person/Person.js';
 
 // import './SomeDiv.js';
@@ -61,10 +60,7 @@ import Person from './Person/Person.js';
         border: '1px solid blue',
         padding: '8px',
         cursor: 'pointer',
-        ':hover': {
-          backgroundColor: 'lightgreen',
-          color: 'black'
-        }
+        
       };
 
       let persons = null;
@@ -84,10 +80,7 @@ import Person from './Person/Person.js';
           );
 
           style.backgroundColor = 'red';
-          style[':hover'] = {
-            backgroundColor: 'salmon',
-            color: 'black'
-          }
+          
       }
 
 
@@ -101,7 +94,6 @@ import Person from './Person/Person.js';
 
 
       return (
-        <StyleRoot>
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
@@ -122,12 +114,11 @@ import Person from './Person/Person.js';
 
           </header>
         </div>
-        </StyleRoot>
       );
     }
     }
 
-    export default Radium(App);
+    export default App;
 
 
 
