@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 //use state allows us to manage state in a functional component
 //use state ALWAYS returns an array with Exactly TWO ELEMENTS
 import logo from './logo.svg';
+import classes from './App.module.css';
 import './App.css';
 import Person from './Person/Person.js';
 
@@ -84,20 +85,20 @@ import Person from './Person/Person.js';
       }
 
 
-      const classes = [''];
+      const assignedClasses = [''];
       if (this.state.persons.length <= 2){
-        classes.push('red'); // this will make the classess = ['red']
+        assignedClasses.push( classes.red ); // this will make the classes = ['red']
       }
       if (this.state.persons.length <=1) {
-        classes.push('bold'); // this will make the classes = ['red','bold']
+        assignedClasses.push( classes.bold ); // this will make the classes = ['red','bold']
       }
 
 
       return (
-        <div className="App">
+        <div className={classes.App}>
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <p className={classes.join(' ')} >This is Really Working</p>
+            <p className={assignedClasses.join(' ')} >This is Really Working</p>
 
             <button
             style={style}
