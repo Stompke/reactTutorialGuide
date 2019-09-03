@@ -7,6 +7,7 @@ import logo from './logo.svg';
 import classes from './App.module.css';
 import './App.css';
 import Person from './Person/Person.js';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 // import './SomeDiv.js';
  class App extends Component {
@@ -54,34 +55,27 @@ import Person from './Person/Person.js';
 
 
     render() {
-      const style = {
-        backgroundColor: 'green',
-        color: 'white',
-        font: 'inherit',
-        border: '1px solid blue',
-        padding: '8px',
-        cursor: 'pointer',
-        
-      };
 
       let persons = null;
+      let btnClass = '';
+
+
       //this should be default
       if (this.state.showPersons) {
         persons = (
             <div>
               {this.state.persons.map((person, index) => {
-                return <Person
+                return <ErrorBoundary key={person.id}>
+                  <Person
                 click={() => this.deletePersonHandler(index)}
                 name={person.name}
                 age={person.age}
-                key={person.id}
-                changed={(event) => this.nameChangedHandler(event, person.id)}/>
+                
+                changed={(event) => this.nameChangedHandler(event, person.id)}/></ErrorBoundary>
               })}
             </div>
           );
-
-          style.backgroundColor = 'red';
-          
+          btnClass = classes.Red;
       }
 
 
@@ -101,7 +95,7 @@ import Person from './Person/Person.js';
             <p className={assignedClasses.join(' ')} >This is Really Working</p>
 
             <button
-            style={style}
+            className={btnClass}
             onClick={this.togglePersonsHandler}
             > Toggle Persons Man</button>
 
